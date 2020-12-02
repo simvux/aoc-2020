@@ -44,8 +44,10 @@ unsafe fn parse(line: &[u8]) -> (Policy, &[u8]) {
     let from = unwrap_unchecked_opt(segments.next());
     let to = unwrap_unchecked_opt(segments.next());
     let letter = unwrap_unchecked_opt(segments.next());
-    let _whitespace = unwrap_unchecked_opt(segments.next());
-    let password = unwrap_unchecked_opt(segments.next());
+    let whitespace = unwrap_unchecked_opt(segments.next());
+
+    let password = &line[from.len() + to.len() + letter.len() + whitespace.len() + 4..];
+    // let password = unwrap_unchecked_opt(segments.next());
 
     (
         Policy {
