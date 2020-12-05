@@ -28,10 +28,6 @@ part2 seating =
 pairs :: [a] -> [(a, a)]
 pairs xs = zip xs (tail xs)
 
-trySeat :: (Int, Int, Int) -> [Int] -> Bool
-trySeat (prior, seat, next) taken = 
-  elem seat taken && elem prior taken && elem next taken
-
 parse :: String -> [Seating]
 parse = map parseLine . lines
 
